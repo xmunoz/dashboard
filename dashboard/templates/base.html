@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container-fluid">
-<h1>iCTF Dashboard</h1>
+<div class="col-sm-3 col-md-2 sidebar">
   <ul class="nav nav-sidebar">
     <li><a href="/">Home</a></li>
     <li><a href="/scoreboard">Scoreboard</a></li>
@@ -16,9 +16,10 @@
     <li><a href="/service-states">Service States</a></li>
     <li><a href="/firstbloods">First Bloods</a></li>
   </ul>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <h1 class="page-header">iCTF Dashboard</h1>
   {% block body %}{% endblock %}
+</div>
 </div>
 </body>
