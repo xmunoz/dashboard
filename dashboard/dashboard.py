@@ -19,20 +19,21 @@ print("yay! successful login!")
 
 @app.route('/')
 def show_team_status():
-    status = CTF.get_team_status()
-    return render_template('home.html', status=status)
+    status = CTF.get_game_status()
+    return render_template('home.html', status=status, title="Game Status")
 
 @app.route('/services')
 def show_services():
-    status = CTF.get_service_list()
-    return render_template('service_list.html', status=status)
+    s = CTF.get_service_list()
+    num_services = len(s)
+    return render_template('services.html', num_services=num_services, services=s, title="Services")
 
 @app.route('/teams')
 def show_teams_list():
-    tlist = CTF.get_teams_list()
-    return render_template('login.html', teams=tlist)
+    tlist = CTF.get_game_status()["teams"]
+    return render_template('teams.html', teams=tlist, title="Teams")
 
 @app.route('/teams/<tid>')
 def show_team(tid):
-    tlist = CTF.get_teams_list()
-    return render_template('login.html', teams=tlist)
+    tlist = CTF.get_game_status()
+    return render_template('team.html', team=tlist["teams"][tid], title="Team View")

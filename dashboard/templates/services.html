@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body %}
+<p>{{num_services}} services </p>
+<div>
+<table class="table">
+<tr>
+{% for s in services[0].keys() %}
+<th>{{s}}</th>
+{% endfor %}
+</tr>
+{% for s in services %}
+<tr>
+{% for v in s.values() %}
+<td>{{v}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
